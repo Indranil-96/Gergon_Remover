@@ -6,6 +6,9 @@ import { FaInstagram } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { SiConvertio } from "react-icons/si";
 import { TfiViewListAlt } from "react-icons/tfi";
+import Aos from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function removegergon(input) {
   let text = input;
@@ -40,23 +43,42 @@ function removegergon(input) {
 }
 
 const Home = () => {
+  useEffect(() => {
+    Aos.init({
+      duration: 2500,
+      once: true,
+    });
+  }, []);
+
+  const viewPortfolio = () => {
+    window.open("https://my-portfolio-website-29451.web.app/");
+  };
   return (
     <>
       <div className="min-h-screen bg-linear-to-b from-blue-600 to-blue-900 text-white">
         {/* Navbar */}
-        <nav className="flex justify-between items-center px-8 py-4">
-          <div className="text-2xl font-bold">Clean Copy Paste Wizard</div>
-          <button className="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-lg cursor-pointer flex items-center gap-2">
+        <nav className="flex justify-between items-center px-8 py-4 ">
+          <div className="text-2xl font-bold" data-aos="fade-up">
+            Clean Copy Paste Wizard
+          </div>
+          <button
+            onClick={viewPortfolio}
+            className="bg-pink-500 hover:bg-pink-600 px-4 py-2 rounded-lg cursor-pointer flex items-center gap-2"
+            data-aos="fade-up"
+          >
             <TfiViewListAlt />
             View Portfolio
           </button>
         </nav>
 
         {/* Hero Section */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8 px-12 py-20 items-center">
+        <section className="flex md:grid-cols-2 gap-8 px-12 py-20 items-center">
           {/* Left Content */}
           <div>
-            <h4 className="text-xl md:text-5xl font-bold leading-tight">
+            <h4
+              className="text-xl md:text-5xl font-bold leading-tight"
+              data-aos="slide-left"
+            >
               Turn messy text and URLs into clean, simple copy.
             </h4>
             <textarea className="w-full max-w-lg h-40 p-3 border rounded mb-4 text-center justify-center gap-2 mt-4">
@@ -65,7 +87,10 @@ const Home = () => {
             <p className="mt-4 text-lg">
               Cut the clutter. Get clean text with Gergon Remover.
             </p>
-            <button className="mt-6 bg-pink-500 hover:bg-pink-600 px-6 py-3 rounded-lg font-semibold flex items-center gap-2 cursor-pointer">
+            <button
+              className="mt-6 bg-pink-500 hover:bg-pink-600 px-6 py-3 rounded-lg font-semibold flex items-center gap-2 cursor-pointer"
+              data-aos="fade-up"
+            >
               Convert <SiConvertio />
             </button>
           </div>
@@ -85,6 +110,7 @@ const Home = () => {
               src="./herobg.png"
               alt="Rocket Launch Illustration"
               className="w-80 md:w-100 rounded-4xl"
+              data-aos="fade-up"
             />
           </div>
         </section>
